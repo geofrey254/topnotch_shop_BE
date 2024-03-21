@@ -22,6 +22,7 @@ class Books(models.Model):
     title = models.CharField(max_length=255)
     author = models.CharField(max_length=255)
     description = models.CharField(max_length=400)
+    price = models.IntegerField(null=True)
     front_thumbnail = models.FileField(upload_to='images/', null=True)
     back_thumbnail = models.FileField(upload_to='images/', null=True)
     category = models.ForeignKey(Category, on_delete=models.PROTECT, default=1)
@@ -29,6 +30,7 @@ class Books(models.Model):
 
     class Meta:
         ordering = ['-published']
+        verbose_name_plural = "Books"
 
     def __str__(self):
         return self.title
